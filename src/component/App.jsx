@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import "./index.css"
 import DisplayMessage from './displayMessage'
 import ItemList from './itemList'
@@ -8,7 +8,17 @@ export default function App(){
     const [ inputValue, setInputValue  ] = React.useState("")
     const [ isEmpty, setIsEmpty ] = React.useState(false)
     const [ addedToList, setAddedToList ] = React.useState(false)
-    const [ list, setList ] = React.useState([])
+    const [ list, setList ] = React.useState(() => {
+        const localValue = localStorage.getItem("ITEM")
+        if(localValue == null) return []
+
+        return JSON.parse(localValue)
+    })
+    
+    useEffect(() => {
+        localStorage.setItem("ITEM", JSON.stringify(list))
+    }, [list])
+
     const { markRead, setMarkRead, messageDeleted, setMessageDeleted } = useContext(List)
     function addToList(){
         setList(prevList => {

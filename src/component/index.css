@@ -115,3 +115,21 @@
     color: red;
     margin-top: 30px;
 }
+@media screen and (max-width: 425px){
+    .header-input .list-input {
+        width: 150px;
+        padding: 5px 15px;
+    }
+    .header h1 {
+        font-size: 2rem;
+    }
+    .empty-list {
+        font-size: 1rem;
+    }
+    .header-input button {
+        padding: 5px 15px;
+    }
+    .each-item p {
+        text-align: center;
+    }
+}
