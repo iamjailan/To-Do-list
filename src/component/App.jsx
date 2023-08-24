@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import "./index.css"
-import Error from './error'
-import Added from './add'
+import DisplayMessage from './displayMessage'
 import ItemList from './itemList'
 import { List } from '../ContextAPI'
 
@@ -10,7 +9,7 @@ export default function App(){
     const [ isEmpty, setIsEmpty ] = React.useState(false)
     const [ addedToList, setAddedToList ] = React.useState(false)
     const [ list, setList ] = React.useState([])
-    const { markRead, setMarkRead } = useContext(List)
+    const { markRead, setMarkRead, messageDeleted, setMessageDeleted } = useContext(List)
     function addToList(){
         setList(prevList => {
             return [
@@ -35,8 +34,16 @@ export default function App(){
     }
     function removeItem(id){
         setList(prevList => {
-            return prevList.filter(item => item.id !== id)
+            return (
+                prevList.filter(item => item.id !== id)
+                )
         })
+        setMessageDeleted(true)
+    }
+    if(messageDeleted){
+        setTimeout(() => {
+            setMessageDeleted(false)
+        }, 2000)
     }
     function editItem(id, read){
         setList(prevState => {
@@ -48,16 +55,16 @@ export default function App(){
                 return item
             })
         })
-        console.log(read);
     }
     return (
         <article className='list'>
             <div className='header'>
                 <h1>Enter The Text</h1>
                 <main className='header-input'>
-                    {isEmpty ? <Error /> : null}
-                    {addedToList ? <Added /> : null}
-                    <input type='text' name='inputValue' className='list-input' value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+                    {isEmpty ? <DisplayMessage classCSS="error" text="Please Enter To Do" /> : null}
+                    {addedToList ? <DisplayMessage classCSS="added" text="To Do added!" /> : null}
+                    {messageDeleted ? <DisplayMessage classCSS="error" text="To Do deleted!" /> : null}
+                    <input type='text' name='inputValue' placeholder='Enter Text Here!' className='list-input' value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
                     <button onClick={() => addToList()}>Add</button>
                 </main>
             </div>

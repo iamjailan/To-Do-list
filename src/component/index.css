@@ -111,3 +111,7 @@
     text-decoration: line-through;
     color: rgba(0, 0, 0, 0.6);
 }
+.empty-list {
+    color: red;
+    margin-top: 30px;
+}

@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
-import { List } from '../ContextAPI'
 
 export default function ItemList({list , deleteItem, editItem}) {
-    const { markRead } = useContext(List)
   return (
     <>
-        {list.length === 0 ? <h1>List is Empty Now!</h1> :
+        {list.length === 0 ? <h1 className='empty-list'>List is Empty Now!</h1> :
                 list.map((item) => {
                     return (
                     <main className='each-item' key={item.id}>
