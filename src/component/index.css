@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    min-height: 100vh;
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header h1 {
+    margin: 10px 0px;
+    text-align: center;
+    font-size: 3rem;
+}
+.header-input {
+    padding: 10px;
+}
+.header-input input {
+    padding: 10px;
+    width: 200px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.header-input button {
+    padding: 10px 30px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border-left: none ;
+    background-color: blueviolet;
+    color: #fff;
+    transition: .5s;
+}
+.header-input button:hover {
+    background-color: rgb(130, 0, 251);
+}
+.item-list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 500px;
+}
+.each-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 300px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+.each-item p {
+    text-align: left;
+    width: 300px;
+    font-size: 20px;
+    margin: 20px 0px;
+}
+.each-item section {
+    display: flex;
+    padding: 20px;
+    width: 300px;
+    justify-content: space-around;
+}
+.each-item button {
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.edit {
+    background-color: lime;
+    color: #fff;
+    border: 1px solid lime;
+}
+.delete {
+    background-color: red;
+    color: #fff;
+    border: 1px solid red;
+}
